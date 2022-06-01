@@ -42,17 +42,36 @@ function renderQuestion() {
     optionListEl.append(questionListItem);
   }
 }
+
+// next question function
+function nextQuestion() {
+  // sets var to 1 more than before (next object in array)
+  questionIndex++;
+  // calls the question generator function
+  renderQuestion();
+}
+
+// checks the answer and responds accordinly depending on which child of option-list was clicked
+function checkAnswer(event) {
+  // makes sure a list item is clicked on 
+  if (event.target.matches("li")) {
+    var answer = event.target.textContent;
+
+    // if the answer matches, display "correct" and increase count
+    if (answer === questions[questionIndex].answer) {
+      questionResultEl.textContent = "correct";
+      correctCount++;
+    // if answer doesn't matchm display "incorrect"
+    } else {
+      questionResultEl.textContent = "incorrect";
+    }
+  }
+  // callback function after 2000 milliseconds
+  setTimeout(nextQuestion, 2000);
+}
+
+//add event listener to option-list and call checkAsnwer function
+optionListEl.addEventListener("click", checkAnswer);
+
 // calls the function
 renderQuestion();
-
-// makes the button work
-document
-  // selects the html text 
- .querySelector("#change-question")
-  // adds the event for a click 
- .addEventListener("click", function () {
-    // when text is clicked, set var for next object in array
-    questionIndex++;
-    // call the question generator function
-    renderQuestion();
- });
