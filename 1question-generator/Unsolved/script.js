@@ -22,17 +22,17 @@ var questionIndex = 0;
 var correctCount = 0;
 
 function renderQuestion() {
-  // sets the text of html element #question to the question property of the object in the questions array
+  // sets the text of html element #question to the question property in the object in the questions array
   questionEl.textContent = questions[questionIndex].question;
 
   // sets #option-list element to an empty string so choices erase before new question
   optionListEl.innerHTML = "";
 
-  // gets the choices from the array of choices and starts at object 0
+  // gets the choices from the array of choices and starts at element 0
   var choices = questions[questionIndex].choices;
   var choicesLength = choices.length;
 
-  // loop through each choice starting at 0 and increasing by 1 until you reach the end of the questions array
+  // loop through each element starting at 0 and increasing by 1 until you reach the end of the choice array for each element
   for (var i = 0; i < choicesLength; i++) {
     // creates html list elements
     var questionListItem = document.createElement("li");
@@ -44,3 +44,15 @@ function renderQuestion() {
 }
 // calls the function
 renderQuestion();
+
+// makes the button work
+document
+  // selects the html text 
+ .querySelector("#change-question")
+  // adds the event for a click 
+ .addEventListener("click", function () {
+    // when text is clicked, set var for next object in array
+    questionIndex++;
+    // call the question generator function
+    renderQuestion();
+ });
