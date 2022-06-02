@@ -3,24 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .choices {
-        list-style: none;
-      }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Coding Quiz</title>
+
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <div id="timer"></div>
+    <div class="scores"><a href="highscores.html">View Highscores!</a></div>
+    <div id="timer" class="timer">Time: <span id="time">0</span></div>
 
-    <div id="question"></div>
+    <div class="wrapper">
+      <div id="start-screen" class="start">
+        <h1>Coding Quiz</h1>
+        <p>
+          Try and answer the questions withing the time limit.  If you get one wrong, points will be deducted from the score and time reduced. 
+        </p>
+        <button id="start">Start Quiz</button>
+      </div>
 
-    <ul id="option-list" class="choices"></ul>
+      <div id="question" class="hide"></div>
+      <ul id="option-list" class="choices" class="hide"></ul>
+    </div>
 
     <div id="question-result"></div>
 
-    <div id="change-question">Change Question</div>
-
-    <script src="./script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
