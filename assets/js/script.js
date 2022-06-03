@@ -40,6 +40,10 @@ var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
 var startBtnEl = document.querySelector("#start");
 var startScreenEl = document.querySelector("#start-screen");
+var saveScoreBtn = document.querySelector("#submit");
+var finalScoreEl = document.getElementById("final-score");
+var highScoreEl = document.getElementById("highscores");
+var initialsEl = document.getElementById("initials");
 
 // starts the questions array at 0
 var questionIndex = 0;
@@ -100,6 +104,7 @@ function nextQuestion() {
   // if the arrays runs out of questions, treat it like time = 0 (end game)
   if (questionIndex === questions.length) {
     time = 0;
+    endQuiz();
   }
 
   // calls the question generator function
@@ -108,8 +113,6 @@ function nextQuestion() {
 
 // checks the answer and responds accordinly depending on which child of option-list was clicked
 function checkAnswer(event) {
-  // pause timer
-  clearInterval(timerId);
 
   // makes sure a list item is clicked on 
   if (event.target.matches("button")) {
@@ -123,24 +126,28 @@ function checkAnswer(event) {
     // if answer doesn't matchm display "incorrect"
     } else {
       questionResultEl.textContent = "incorrect";
-      // if answer is wrong, subtract 2 seconds from timer
-      time = time - 2;
+      // if answer is wrong, subtract 5 seconds from timer
+      time = time - 5;
       timerEl.textContent = time;
-      // callback function after 2000 milliseconds
-      setTimeout(nextQuestion, 7000);
+      return;
     }
   }
-
 }
 
 // ends the quiz annd clears the timer
 function endQuiz() {
   // clear Interval and wont call back function anymore
   clearInterval(timerId);
-  // update DOM to indicate game is over
-  var body = document.body;
+
+  questionEl.setAttribute("class", "hide");
+  optionListEl.setAttribute("class", "hide");
+  questionResultEl.setAttribute("class", "hide");
+
   // tells user score
-  body.innerHTML = "Game Over! Your Score is " + correctCount;
+  var endScreenEl = document.getElementById("end-screen");
+  endScreenEl.removeAttribute("class");
+  // show final score
+  finalScoreEl.textContent = correctCount;
 }
 
 // updates the counter
@@ -154,7 +161,32 @@ function updateTime() {
   }
 }
 
+function saveScore() {
+  // get the person's name
+  var initials = initialsEl.value.trim();
+  // gets svaed high scores from localStorage
+  var highscores =
+      JSON.parse(window.localStorage.getItem("highscores")) || [];
+  // new score for new user 
+  var newScore = { 
+    score: correctCount, 
+    initials 
+  };
+
+  // pushes and sets new score in localStorage
+  highscores.push(newScore);
+  window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+  // redirect to next page
+  window.location.href = "scores.html";
+}
+
+
+// start quiz
 startBtnEl.addEventListener("click", startQuiz);
 
 //add event listener to option-list and call checkAsnwer function
 optionListEl.addEventListener("click", checkAnswer);
+
+// submit and save score
+saveScoreBtn.addEventListener("click", saveScore);
