@@ -1,36 +1,75 @@
 var questions = [
   {
-    question: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts",
+    question: "How long is an Olympic swimming pool?",
+    choices: ["10 meters", "50 meters", "100 meters", "75 meters"],
+    answer: "50 meters",
   },
   {
     question:
-      "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses",
+      "Who was the first woman to win a Nobel Prize?",
+    choices: ["Florence Nightingale", "Maya Angelou", "Marie Curie", "Ada Lovelace"],
+    answer: "Marie Curie",
   },
   {
-    question: "Arrays in JavaScript can be used to store ____.",
+    question: "What is the joule a unit of?",
     choices: [
-      "numbers and strings",
-      "other arrays",
-      "booleans",
-      "all of the above"
+      "diamond clarity", "speed", "light", "energy"
     ],
-    answer: "all of the above",
+    answer: "energy",
   },
   {
     question:
-      "String values must be enclosed within ____ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "quotes", "parentheses"],
-    answer: "quotes",
+      "What is a single strand of spaghetti called?",
+    choices: ["hair", "spaghetto", "string", "noodle"],
+    answer: "spaghetto",
   },
   {
     question:
-      "A very useful tool used during development and debugging for printing content to the debugger is:",
-    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-    answer: "console.log",
+      "What is the best-selling Christmas single of all time?",
+    choices: ["'White Christmas' Bing Cosby", "'All I Want for Christmas' Mariah Carey", "'Last Christmas' Wham!" , "'Rockin' Around the Christmas Tree' Brenda Lee" ],
+    answer: "'White Christmas' Bing Cosby",
+  },
+  {
+    question:
+      "What year did MTV launch?",
+    choices: ["1990", "1987", "1978", "1981"],
+    answer: "1981",
+  },
+  {
+    question:
+      "By U.S. law, exit signs must be one of what two colors?",
+    choices: ["green/red", "blue/green", "red/blue", "yellow/green"],
+    answer: "green/red",
+  },
+  {
+    question:
+      "Where did the 2000 Summer Olympics take place?",
+    choices: ["London, England", "Paris, France", "Athens, Greece", "Sydney, Australia"],
+    answer: "Sydney, Australia",
+  },
+  {
+    question:
+      "Who was the first American woman in space?",
+    choices: ["Sally Ride", "Samantha Good", "Barbara Leahy", "Cate Weston"],
+    answer: "Sally Ride",
+  },
+  {
+    question:
+      "What was the first state?",
+    choices: ["Massachusetts", "Maine", "Delaware", "Virginia"],
+    answer: "Delaware",
+  },
+  {
+    question:
+      "How many legs does a lobster have?",
+    choices: ["8", "10", "4", "6"],
+    answer: "10",
+  },
+  {
+    question:
+      "Which mammal is known to have the most powerful bite in the world?",
+    choices: ["alligator", "hippo", "lion", "tiger"],
+    answer: "hippo",
   }
 ];
 
@@ -50,7 +89,7 @@ var questionIndex = 0;
 var correctCount = 0;
 
 // variables to hold the time and intervaliD for the timer
-var time = 20;
+var time = 60;
 var timerId;
 
 // start quiz function
