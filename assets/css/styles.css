@@ -54,8 +54,8 @@ li:nth-child(odd) {
 }
 
 .wrapper {
-  margin: 100px auto 0 auto;
-  max-width: 600px;
+  margin: 200px auto 0 auto;
+  max-width: 800px;
 }
 
 .hide {
@@ -85,4 +85,16 @@ li:nth-child(odd) {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+#question-result {
+  margin: 50pt 490pt;
+}
+
+#option-list button {
+  margin: 10pt;
+}
+
+#end-screen {
+  text-align: center;
 }
