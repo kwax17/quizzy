@@ -396,35 +396,69 @@ function startQuiz() {
   renderQuestion();
 }
 
+// Randomly shuffle the questions array
+function shuffleQuestions() {
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]];
+  }
+}
+
 function renderQuestion() {
-  // check if time is 0 and if so end game
+  // Shuffle questions before rendering
+  shuffleQuestions();
+
+  // Rest of the function remains the same
   if (time == 0) {
     endQuiz();
     return;
   }
 
-  // sets the text of html element #question to the question property in the object in the questions array
   questionEl.textContent = questions[questionIndex].question;
 
-  // sets #option-list element to an empty string so choices erase before new question
   optionListEl.innerHTML = "";
   questionResultEl.innerHTML = "";
 
-  // gets the choices from the array of choices and starts at element 0
   var choices = questions[questionIndex].choices;
   var choicesLength = choices.length;
 
-  // loop through each element starting at 0 and increasing by 1 until you reach the end of the choice array for each element
   for (var i = 0; i < choicesLength; i++) {
-    // creates html list elements
     var questionListItem = document.createElement("button");
-    // sets the text to strings in choices proprty
     questionListItem.textContent = choices[i];
-    // adds it to the option list
     optionListEl.append(questionListItem);
-
   }
 }
+
+
+// function renderQuestion() {
+//   // check if time is 0 and if so end game
+//   if (time == 0) {
+//     endQuiz();
+//     return;
+//   }
+
+//   // sets the text of html element #question to the question property in the object in the questions array
+//   questionEl.textContent = questions[questionIndex].question;
+
+//   // sets #option-list element to an empty string so choices erase before new question
+//   optionListEl.innerHTML = "";
+//   questionResultEl.innerHTML = "";
+
+//   // gets the choices from the array of choices and starts at element 0
+//   var choices = questions[questionIndex].choices;
+//   var choicesLength = choices.length;
+
+//   // loop through each element starting at 0 and increasing by 1 until you reach the end of the choice array for each element
+//   for (var i = 0; i < choicesLength; i++) {
+//     // creates html list elements
+//     var questionListItem = document.createElement("button");
+//     // sets the text to strings in choices proprty
+//     questionListItem.textContent = choices[i];
+//     // adds it to the option list
+//     optionListEl.append(questionListItem);
+
+//   }
+// }
 
 // next question function
 function nextQuestion() {
